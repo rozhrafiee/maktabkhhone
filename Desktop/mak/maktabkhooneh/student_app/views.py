@@ -29,6 +29,15 @@ def signup(request) :
     else : 
         return HttpResponse("bad request!")
 
+
+@csrf_exempt
 def payment(request) :
-    pass
-# Create your views here.
+    if request.method == 'POST' :
+        body = json.loads(request.body)
+        student = Student.objects.get(name = body['name_inp'])
+        student.wallet += body['price_inp']
+        student.save()
+        return HttpResponse("payment successful")
+    else :
+        return HttpResponse("bad request!")
+

@@ -3,4 +3,13 @@ from cupon_app.models import Cupon
 
 @register(Cupon)
 class CuponAdmin(ModelAdmin):
-    pass
+    list_display = [
+        'code',
+        'discount',
+        'expiry_date',
+    ]
+    search_fields = [
+        'code',
+        'discount',
+        'expiry_date',
+    ]

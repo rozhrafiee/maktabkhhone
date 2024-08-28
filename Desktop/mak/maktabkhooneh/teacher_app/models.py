@@ -34,7 +34,10 @@ class Teacher(models.Model) :
         verbose_name="Category",
         help_text="Enter the category of the teacher."
     )
-    rate = models.FloatField(null = True)
+    rate = models.FloatField(
+        verbose_name="Rate",
+        help_text="Enter the rate of the teacher."
+    )
 
     wallet = models.FloatField(
         verbose_name="Wallet Balance",
