@@ -9,3 +9,9 @@ class Factor(models.Model) :
     # class1 = models.ForeignKey(Class, on_delete=models.CASCADE)
     payment_status = models.BooleanField()
 
+     def __str__(self) -> str:
+        return self.student_name
+    
+    class Meta:
+        verbose_name = "Factor"
+        verbose_name_plural = "FACTORS"
