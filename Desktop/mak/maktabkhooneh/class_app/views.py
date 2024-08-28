@@ -1,12 +1,12 @@
 from django.shortcuts import render , HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from class_app.models import Class
+from class_app.models import Clas
 from teacher_app.models import Teacher
 import json
 
 
 def class_list(request):
-    clases = Class.objects.all()
+    clases = Clas.objects.all()
     class_list  = []
     for item in clases:
         class_dict = {
@@ -25,7 +25,7 @@ def create_class(request):
     if request.method == 'POST':
         body = json.loads(request.body)
         selected_tacher = Teacher.objects.get(id=body['input_cupon'])
-        Class.objects.create(
+        Clas.objects.create(
             name= body['input_name'],
             price= body['input_price'],
             time = body['input_class'],
@@ -41,7 +41,7 @@ def create_class(request):
 def update_price(request , inp_id):
     if request.method == 'PATCH':
         body = json.loads(request.body)
-        item = Class.objects.get(id = inp_id)
+        item = Clas.objects.get(id = inp_id)
         item.price = body['input_price']
         item.save()
         return HttpResponse("price updated!")

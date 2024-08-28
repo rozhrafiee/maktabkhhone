@@ -1,6 +1,6 @@
 from django.db import models
 from category_app.models import Category
-from class_app.models import Class
+from class_app.models import Clas
 
 class Teacher(models.Model) :
     first_name = models.CharField(
@@ -24,7 +24,7 @@ class Teacher(models.Model) :
         help_text="Enter the phone number of the teacher."
     )
     clas = models.ManyToManyField(
-        Class,
+        Clas,
         related_name="Class",
         verbose_name="Class",
         help_text="Enter the class of the teacher."

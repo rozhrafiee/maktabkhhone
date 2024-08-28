@@ -1,6 +1,6 @@
 from django.shortcuts import render 
 from django.http.response import HttpResponse , JsonResponse
-from class_app.models import Class
+from class_app.models import Clas
 from student_app.models import Student
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +13,7 @@ def return_all_students(request):
     return JsonResponse(lst , safe= False)
 
 def list_class(request , student_name) :
-    Class_lst = Class.objects.filter(student= student_name).values('name' , 'time' , 'price' , 'teacher' , 'category')
+    Class_lst = Clas.objects.filter(student= student_name).values('name' , 'time' , 'price' , 'teacher' , 'category')
     return JsonResponse(list(Class_lst) , safe= False)
 
 @csrf_exempt
