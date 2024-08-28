@@ -8,4 +8,10 @@ class Class(models.Model) :
     price = models.IntegerField()
     teacher = models.ManyToManyField(Teacher)
     category = models.ForeignKey(Category , on_delete=models.CASCADE )
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Class"
+        verbose_name_plural = "Classes"
 # Create your models here.

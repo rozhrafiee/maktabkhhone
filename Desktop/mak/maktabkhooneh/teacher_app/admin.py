@@ -1,3 +1,6 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
+from teacher_app.models import Teacher
 
-# Register your models here.
+@register(Teacher)
+class TeacherAdmin(ModelAdmin):
+    pass
