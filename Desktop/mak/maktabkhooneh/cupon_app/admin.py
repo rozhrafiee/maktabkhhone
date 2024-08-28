@@ -1,3 +1,6 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
+from cupon_app.models import Cupon
 
-# Register your models here.
+@register(Cupon)
+class CuponAdmin(ModelAdmin):
+    pass
