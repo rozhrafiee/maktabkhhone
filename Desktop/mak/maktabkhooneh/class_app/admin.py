@@ -1,3 +1,16 @@
-from django.contrib import admin
+from django.contrib.admin import register , ModelAdmin
+from class_app.models import Class
 
-# Register your models here.
+@register(Class)
+class ClassAdmin(ModelAdmin):
+    list_display = [
+        'name',
+        'price',
+        'time',
+        'time',
+        'category',
+    ]
+    search_fields = [
+        'name',
+    ]
+    
