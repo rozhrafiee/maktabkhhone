@@ -7,8 +7,6 @@ class TeacherAdmin(ModelAdmin):
         'last_name',
         'email',
         'phone_number',
-        'clas',
-        'category',
         'rate',
         'wallet',
     ]

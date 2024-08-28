@@ -6,7 +6,7 @@ class Factor(models.Model) :
     student_name = models.CharField(max_length=50)
     price = models.FloatField()
     cupon = models.OneToOneField(Cupon, on_delete=models.PROTECT)
-    class1 = models.ForeignKey(Clas, on_delete=models.CASCADE)
+    class1 = models.ForeignKey(Clas,default= '', on_delete=models.CASCADE)
     payment_status = models.BooleanField()
 
     def __str__(self) -> str:

@@ -1,7 +1,7 @@
 from django.contrib.admin import register , ModelAdmin
-from class_app.models import Class
+from class_app.models import Clas
 
-@register(Class)
+@register(Clas)
 class ClassAdmin(ModelAdmin):
     list_display = [
         'name',
