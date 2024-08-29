@@ -36,7 +36,7 @@ def signup(request) :
         return HttpResponse("bad request!")
 
     
-@csrf_exempt  
+
 def average_rate(request):  
     if request.method == 'GET':  
         all_teachers = Teacher.objects.all()
@@ -49,7 +49,6 @@ def average_rate(request):
         return HttpResponse("bad request!", status=400)
 
 
-@csrf_exempt
 def sort_by_rate(request):
     if request.method == 'GET':
         all_teachers = Teacher.objects.all()
