@@ -52,7 +52,7 @@ def average_rate(request):
 @csrf_exempt
 def sort_by_rate(request):
     if request.method == 'GET':
-        all_teachers = teacher.objects.all()
+        all_teachers = Teacher.objects.all()
         sorted_list = sorted(all_teachers, key=lambda teacher: teacher.rate, reverse=True)
         my_teacher_list = []
         for teacher in sorted_list:
