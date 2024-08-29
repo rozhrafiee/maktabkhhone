@@ -5,7 +5,7 @@ import json
 
 
 def teacher_list(request):
-    all_teachers = teacher.objects.all()
+    all_teachers = Teacher.objects.all()
     my_teacher_list = []
     for teacher in all_teachers:
         teacher_dictionary = {
@@ -14,7 +14,7 @@ def teacher_list(request):
             "email" : teacher.email,
             "phone number " : teacher.phone_number,
             "clas" : teacher.clas,
-            "category" : teacher.category,
+            # "category" : teacher.category,
             "rate" : teacher.rate,
             "wallet" : teacher.wallet
         }
@@ -35,18 +35,20 @@ def signup(request) :
     else : 
         return HttpResponse("bad request!")
 
-@csrf_exempt
-def average_rate(request):
-    if request.method == 'GET':
-        all_teachers = teacher.objects.all()
-        sum = 0
-        for teacher in all_teachers:
-            sum += teacher.rate
-        average = sum / len(all_teachers)
-        return JsonResponse({"average rate" : average})
-    else:
-        return HttpResponse("bad request!")
     
+@csrf_exempt  
+def average_rate(request):  
+    if request.method == 'GET':  
+        all_teachers = Teacher.objects.all()
+        if not all_teachers:  
+            return JsonResponse({"average_rate": 0})  
+        total_rate = sum(teacher.rate for teacher in all_teachers)
+        average = total_rate / len(all_teachers)  
+        return JsonResponse({"average_rate": average})  
+    else:  
+        return HttpResponse("bad request!", status=400)
+
+
 @csrf_exempt
 def sort_by_rate(request):
     if request.method == 'GET':
@@ -60,7 +62,7 @@ def sort_by_rate(request):
                 "email" : teacher.email,
                 "phone number " : teacher.phone_number,
                 "clas" : teacher.clas,
-                "category" : teacher.category,
+                # "category" : teacher.category,
                 "rate" : teacher.rate,
                 "wallet" : teacher.wallet
             }
