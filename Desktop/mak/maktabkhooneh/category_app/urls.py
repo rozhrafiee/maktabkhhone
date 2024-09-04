@@ -1,7 +1,3 @@
-from django.urls import path 
-from category_app.views import search_category , return_all_categorys 
-
-urlpatterns = [
-    path("" , return_all_categorys) ,
-    path("search" , search_category) ,
-]
+from django.urls import path from .views import search_category, return_all_categories
+urlpatterns = [ path('search/', search_category, name='search_category'),
+               path('all/', return_all_categories, name='return_all_categories'), ]
