@@ -1,17 +1,36 @@
-from django.http.response import HttpResponse, JsonResponse
-from cupon_app.models import Cupon
+from rest_framework.generics import (
+    ListAPIView,
+    RetrieveAPIView,
+    CreateAPIView,
+    DestroyAPIView,
+    UpdateAPIView,
+    RetrieveUpdateDestroyAPIView,
+)
+from rest_framework.views import APIView
+from .models import Cupon
+from .serializers import CuponSerializer
+from django.http import HttpResponse
 
+class CuponList(ListAPIView):
+    queryset = Cupon.objects.all()
+    serializer_class = CuponSerializer
 
-def cupon_list(request):
-    all_cupons = Cupon.objects.all()
-    my_cupon_list = []
-    for cupon in all_cupons:
-        cupon_dictionary = {
-            "title": cupon.title,
-            "expire_date": cupon.expire_date,
-            "percent": cupon.percent,
-            "cupon availablity": cupon.cupon_availability,
-        }
-        my_cupon_list.append(cupon_dictionary)
+class CuponDetail(RetrieveAPIView):
+    queryset = Cupon.objects.all()
+    serializer_class = CuponSerializer
 
-    return JsonResponse(my_cupon_list,safe=False)
+class CreateCupon(CreateAPIView):
+    queryset = Cupon.objects.all()
+    serializer_class = CuponSerializer
+
+class UpdateCupon(UpdateAPIView):
+    queryset = Cupon.objects.all()
+    serializer_class = CuponSerializer
+
+class DeleteCupon(DestroyAPIView):
+    queryset = Cupon.objects.all()
+    serializer_class = CuponSerializer
+
+class CuponDetailUpdateDelete(RetrieveUpdateDestroyAPIView):
+    queryset = Cupon.objects.all()
+    serializer_class = CuponSerializer
