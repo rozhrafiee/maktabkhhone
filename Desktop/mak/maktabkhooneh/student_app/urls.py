@@ -1,9 +1,9 @@
-from django.urls import path 
-from student_app.views import return_all_students , list_class , signup , payment
-
-urlpatterns = [
-    path("" , return_all_students) ,
-    path("class_list" , list_class) , 
-    path("signup" , signup) ,
-    path("payment" , payment)
-]
+from django.urls import path from .views import ( StudentList, StudentDetail, CreateStudent, UpdateStudent,
+StudentDetailUpdate, ListClassesByStudent, PaymentAPIView )
+urlpatterns = [ path('students/', StudentList.as_view(), name='student-list'), 
+               path('students/<int:pk>/', StudentDetail.as_view(), name='student-detail'), 
+               path('students/create/', CreateStudent.as_view(), name='student-create'),
+               path('students/<int:pk>/update/', UpdateStudent.as_view(), name='student-update'),
+               path('students/<int:pk>/detail-update/', StudentDetailUpdate.as_view(), name='student-detail-update'),
+               path('students/<str:student_name>/classes/', ListClassesByStudent.as_view(), name='student-classes'),
+               path('students/payment/', PaymentAPIView.as_view(), name='student-payment'), ]
