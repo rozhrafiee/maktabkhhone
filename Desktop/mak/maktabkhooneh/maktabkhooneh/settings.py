@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'category_app',
     'cupon_app',
     'factor_app',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
