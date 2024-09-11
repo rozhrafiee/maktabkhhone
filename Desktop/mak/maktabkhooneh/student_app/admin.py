@@ -1,6 +1,12 @@
-from django.contrib import admin
-from student_app.models import Student
+from django.contrib.admin import register, ModelAdmin
+from teacher_app.models import Teacher
 
-admin.site.register(Student)
 
-# Register your models here.
+@register(Teacher)
+class TeacherAdmin(ModelAdmin):
+    list_display = [
+                    'name',
+                    'email',
+    ]
+    search_fields = ['name',
+    ]
